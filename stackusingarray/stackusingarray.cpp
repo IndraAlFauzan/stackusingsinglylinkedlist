@@ -5,7 +5,7 @@ using namespace std;
 
 class StackArray {
 private:
-	string	stack_array[5];
+	int	stack_array[5];
 	int top;
 
 public:
@@ -14,10 +14,10 @@ public:
 		top = -1;
 	}
 
-	string push(string element) {
+	int push(int element) {
 		if (top == 4) { // step 1
 			cout << "Number of data exceeds the limit." << endl;
-			return "";
+			return 0;
 		}
 
 		top++; //step 2
@@ -57,7 +57,7 @@ public:
 
 int main() {
 	StackArray s;
-
+	char ch;
 	while (true) {
 		cout << endl;
 		cout << "\n***Stack Menu***\n";
@@ -66,14 +66,12 @@ int main() {
 		cout << "3. Display\n";
 		cout << "4. Exit\n";
 		cout << "\nEnter your choice: ";
-		string input;
-		getline(cin, input);
-		char ch = (input.empty() ? '0' : input[0]);
+		cin >> ch;
 		switch (ch) {
 		case '1': {
 			cout << "\nEnter an element: ";
-			string element;
-			getline(cin, element);
+			int element;
+			cin >> element;
 			s.push(element);
 			break;
 		}
