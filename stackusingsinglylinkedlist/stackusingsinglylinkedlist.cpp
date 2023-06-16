@@ -8,8 +8,7 @@ public:
 	int data;
 	Node* next;
 
-	Node(int value) {
-		data = value;
+	Node() {
 		next = NULL;
 	}
 };
@@ -25,11 +24,13 @@ public:
 	}
 
 	// Push operation: Insert an element onto the top of the stack
-	void push(int value) {
-		Node* newNode = new Node(value); // Create a new node with the given value
-		newNode->next = top; // Set the next pointer of the new node to the current top node
-		top = newNode; // Update the top pointer to the new node
+	int push(int value) {
+		Node* newNode = new Node(); // 1. Allocate memory for the new node
+		newNode->data = value; // 2. assign value
+		newNode->next = top; // 3. Set the next pointer of the new node to the current top node
+		top = newNode; // 4. Update the top pointer to the new node
 		cout << "Push value: " << value << endl;
+		return value;
 	}
 
 	// Pop operation: Remove the topmost element from the stack
@@ -52,7 +53,7 @@ public:
 		else {
 			Node* current = top;
 			while (current != NULL) {
-				cout << current->data << " ";
+				cout << current->data << " " << endl;
 				current = current->next;
 			}
 			cout << endl;
@@ -102,7 +103,7 @@ int main() {
 				cout << "Stack is empty. No top value." << endl;
 			}
 			break;
-		
+
 		case 4:
 			cout << "Exiting program." << endl;
 			break;
